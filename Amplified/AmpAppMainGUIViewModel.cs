@@ -8,21 +8,32 @@ using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 using System.Windows;
 
-public class AmpAppMainGUIViewModel
+using Amplified.Playlist;
+using Amplified.IO;
+using Amplified.Utils;
+using System.ComponentModel;
+
+public class AmpAppMainGUIViewModel : INotifyPropertyChanged
 {
     #region Properties
-
+    public AmpPlaylist DefaultPlaylist
+    {
+        get;
+        set;
+    } = new AmpPlaylist();
     #endregion
 
     #region Fields
     private WaveOutEvent m_audioDevice;
     private AudioFileReader m_audioFile;
+
+    public event PropertyChangedEventHandler PropertyChanged;
     #endregion
 
     #region Constructor
     public AmpAppMainGUIViewModel()
     {
-
+        DefaultPlaylist.EnqueueFile(new FileInfo(@"C:\Windows\media\tada.wav"));
     }
 
     #endregion
@@ -38,7 +49,8 @@ public class AmpAppMainGUIViewModel
         {
             if (m_audioFile == null)
             {
-                InitAudioStream(new AudioFileReader(@"C:\Windows\media\tada.wav"));
+                InitAudioStream(DefaultPlaylist.Front().GetAudioReader());
+                PropertyChanged.OnPropertyChanged(() => DefaultPlaylist.CurrentTrack);
                 m_audioDevice.Play();
             }
         }

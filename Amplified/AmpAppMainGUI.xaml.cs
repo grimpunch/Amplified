@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace Amplified
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AmpAppMainGUI.xaml
     /// </summary>
     public partial class AmpAppMainGUI : Window
     {

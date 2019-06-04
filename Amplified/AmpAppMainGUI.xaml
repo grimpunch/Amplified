@@ -18,6 +18,7 @@
         </Style>
     </Window.Resources>
     <DockPanel Background="DarkSlateGray" LastChildFill="True">
+        <TextBlock Text="{Binding Path=DefaultPlaylist.CurrentTrack, UpdateSourceTrigger=PropertyChanged}"/>
         <Button Style="{StaticResource MediaButton}" Content="Play" Click="{data:MethodBinding OnPlayPause, {data:EventArgs}}" DockPanel.Dock="Left"/>
         <Button Style="{StaticResource MediaButton}" Content="Stop" Click="{data:MethodBinding OnStop, {data:EventArgs}}" DockPanel.Dock="Left"/>
         <Button Style="{StaticResource MediaButton}" Content="Skip" Click="{data:MethodBinding OnNext, {data:EventArgs}}" DockPanel.Dock="Left"/>

@@ -105,6 +105,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Utils\Helpers.cs" />
     <Page Include="AmpAppMainGUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,9 +116,16 @@
       <DependentUpon>AmpAppMainGUI.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Playlist\AmpPlaylistControlTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IO\AmpDiskItem.cs" />
     <Compile Include="MethodBindingExtension.cs" />
+    <Compile Include="Playlist\AmpPlaylist.cs" />
+    <Compile Include="Playlist\AmpPlaylistItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -144,6 +152,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NAudio.Lame.1.0.9\build\NAudio.Lame.targets" Condition="Exists('..\packages\NAudio.Lame.1.0.9\build\NAudio.Lame.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
